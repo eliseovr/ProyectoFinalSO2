@@ -1,0 +1,14 @@
+flowchart TD
+    A([Inicio]) --> B[Mostrar VistaLogin]
+    B --> C[Usuario ingresa credenciales]
+    C --> D{Formato valido?}
+    D -->|No| E[Mostrar error local]
+    E --> B
+    D -->|Si| F[Conectar TLS al servidor]
+    F --> G[Enviar Paquete LOGIN]
+    G --> H{BCrypt valido?}
+    H -->|No| I[Mostrar error del servidor]
+    I --> B
+    H -->|Si| J[Recibir token de sesion]
+    J --> K[Abrir VistaChat]
+    K --> L([Fin])

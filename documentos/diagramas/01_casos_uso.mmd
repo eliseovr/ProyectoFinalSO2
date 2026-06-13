@@ -1,0 +1,22 @@
+flowchart TB
+    U((Usuario))
+    A((Administrador))
+    S((Sistema))
+
+    U --> R[Registrarse]
+    U --> L[Iniciar sesión]
+    U --> E[Enviar mensaje E2E]
+    U --> Rec[Recibir mensaje]
+    U --> C[Cerrar sesión]
+
+    A --> M[Ver monitor del servidor]
+    A --> BD[Administrar base de datos]
+    A --> SQL[Ejecutar consultas SQL]
+
+    S --> T[Validar TLS]
+    S --> P[Persistir mensajes]
+    S --> Log[Registrar eventos]
+
+    L --> T
+    E --> P
+    E --> Rec

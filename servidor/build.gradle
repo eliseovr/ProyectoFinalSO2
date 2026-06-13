@@ -1,0 +1,39 @@
+plugins {
+    id 'application'
+}
+
+dependencies {
+    implementation project(':comun')
+    implementation 'org.xerial:sqlite-jdbc:3.45.3.0'
+    runtimeOnly 'org.slf4j:slf4j-simple:2.0.13'
+}
+
+application {
+    mainClass = 'servidor.ServidorMensajeria'
+}
+
+def appRoot = rootProject.projectDir
+
+tasks.named('run') {
+    workingDir = appRoot
+    environment 'APP_BASE', appRoot.absolutePath
+    environment 'KEYSTORE_PATH', 'certificados/server.p12'
+}
+
+tasks.register('ejecutarMonitor', JavaExec) {
+    group = 'application'
+    description = 'Abre la ventana gráfica de monitoreo del servidor'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'servidor.vista.AplicacionMonitorServidor'
+    workingDir = appRoot
+    environment 'APP_BASE', appRoot.absolutePath
+}
+
+tasks.register('ejecutarAdminBd', JavaExec) {
+    group = 'application'
+    description = 'Abre el administrador gráfico de la base SQLite'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'servidor.vista.AplicacionAdminBaseDatos'
+    workingDir = appRoot
+    environment 'APP_BASE', appRoot.absolutePath
+}

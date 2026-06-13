@@ -1,0 +1,38 @@
+classDiagram
+    class VistaLogin {
+        +mostrar()
+        +mostrarError(msg)
+    }
+    class VistaChat {
+        +mostrarMensaje(m)
+        +actualizarUsuarios(lista)
+    }
+    class ControladorLogin {
+        +registrar()
+        +iniciarSesion()
+    }
+    class ControladorChat {
+        +enviarMensaje()
+        +desconectar()
+    }
+    class ServicioAutenticacion {
+        +conectarTLS()
+        +login()
+        +registro()
+    }
+    class ServicioMensajeria {
+        +enviarE2E()
+        +escucharPush()
+    }
+    class SesionCliente {
+        +token
+        +usuario
+        +clavePrivada
+    }
+
+    VistaLogin --> ControladorLogin
+    VistaChat --> ControladorChat
+    ControladorLogin --> ServicioAutenticacion
+    ControladorChat --> ServicioMensajeria
+    ControladorLogin --> SesionCliente
+    ControladorChat --> SesionCliente

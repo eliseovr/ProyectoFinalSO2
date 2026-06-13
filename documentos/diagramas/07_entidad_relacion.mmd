@@ -1,0 +1,19 @@
+erDiagram
+    USUARIOS ||--o{ MENSAJES_ENVIADOS : remite
+    USUARIOS ||--o{ MENSAJES_RECIBIDOS : recibe
+
+    USUARIOS {
+        int id PK
+        text usuario UK
+        text hash_contrasena
+        text creado_en
+        text clave_publica
+    }
+
+    MENSAJES {
+        int id PK
+        text remitente FK
+        text destinatario FK
+        text contenido
+        text enviado_en
+    }

@@ -1,0 +1,27 @@
+subprojects {
+    apply plugin: 'java'
+
+    group = 'mensajeria'
+    version = '1.0.0'
+
+    java {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}

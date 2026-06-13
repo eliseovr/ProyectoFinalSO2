@@ -1,0 +1,33 @@
+classDiagram
+    class ServidorMensajeria {
+        +iniciar()
+        +aceptarClientes()
+    }
+    class ManejadorCliente {
+        +run()
+        +manejarLogin()
+        +manejarEnvio()
+    }
+    class BaseDatosSqlite {
+        +registrarUsuario()
+        +autenticar()
+        +guardarMensaje()
+    }
+    class GestorSesiones {
+        +registrar(token, hilo)
+        +obtener(nombre)
+    }
+    class MarcoMonitorServidor {
+        +actualizarMetricas()
+        +mostrarEventos()
+    }
+    class ModeloMonitor {
+        +metricas
+        +eventos
+    }
+
+    ServidorMensajeria --> ManejadorCliente
+    ManejadorCliente --> BaseDatosSqlite
+    ManejadorCliente --> GestorSesiones
+    MarcoMonitorServidor --> ModeloMonitor
+    ManejadorCliente --> ModeloMonitor

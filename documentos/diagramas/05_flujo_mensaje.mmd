@@ -1,0 +1,13 @@
+flowchart TD
+    A([Usuario escribe mensaje]) --> B[Cifrar E2E con clave publica del destinatario]
+    B --> C[Enviar Paquete ENVIAR por TLS]
+    C --> D[Servidor valida token de sesion]
+    D --> E{Sesion valida?}
+    E -->|No| F[Error: no autorizado]
+    E -->|Si| G[Persistir E2E1 en SQLite]
+    G --> H{Destinatario online?}
+    H -->|Si| I[Push Paquete MENSAJE]
+    H -->|No| J[Mensaje queda en historial]
+    I --> K[Confirmar al remitente]
+    J --> K
+    K --> L([Fin])

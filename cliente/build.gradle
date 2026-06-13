@@ -1,0 +1,19 @@
+plugins {
+    id 'application'
+}
+
+dependencies {
+    implementation project(':comun')
+}
+
+application {
+    mainClass = 'cliente.AplicacionCliente'
+}
+
+def appRoot = rootProject.projectDir
+
+tasks.named('run') {
+    workingDir = appRoot
+    environment 'APP_BASE', appRoot.absolutePath
+    environment 'KEYSTORE_PATH', 'certificados/server.p12'
+}

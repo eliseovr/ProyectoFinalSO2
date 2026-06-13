@@ -1,0 +1,13 @@
+.gradle/
+build/
+**/build/
+!gradle/wrapper/gradle-wrapper.jar
+.idea/
+*.iml
+datos/
+registros/
+certificados/*.p12
+certificados/*.cer
+certificados/active-cert.sha256
+*.db
+.DS_Store

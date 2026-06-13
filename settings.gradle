@@ -1,0 +1,5 @@
+rootProject.name = 'mensajeria-segura'
+
+include 'comun'
+include 'servidor'
+include 'cliente'

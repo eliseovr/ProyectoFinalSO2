@@ -1,0 +1,14 @@
+flowchart TD
+    A([Main ServidorMensajeria]) --> B[Cargar certificado TLS]
+    B --> C[Crear SSLServerSocket puerto 9443]
+    C --> D[Inicializar BaseDatosSqlite]
+    D --> E[Iniciar RegistroActividad]
+    E --> F{Bucle accept}
+    F --> G[Nueva conexion TLS]
+    G --> H[ExecutorService.submit]
+    H --> I[ManejadorCliente.run]
+    I --> J[Procesar paquetes JSON]
+    J --> K{Desconexion?}
+    K -->|No| J
+    K -->|Si| L[Cerrar sesion y socket]
+    L --> F
